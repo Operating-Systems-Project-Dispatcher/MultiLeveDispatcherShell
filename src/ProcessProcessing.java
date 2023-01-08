@@ -23,13 +23,13 @@ public class ProcessProcessing {
         String result="";
         if(outTime-inTime==1 && burstTime !=1)//user proses mi
         {
-            result= inTime + "  sn  " + "proses başladı" + "   (id:"+processId+ "  öncelik:"+ (priority-1) + "  kalan:"+ (burstTime+1) +")"+"\n";
-            result+=(inTime+1) + "  sn  " + "proses askıda" + "    (id:"+processId+ "  öncelik:"+ priority + "  kalan:"+ (burstTime) +")"+"\n";
+            result= inTime + "  sn  " + "proses başladı" + "   (id:"+processId+ "  öncelik:"+ (priority-1) + "  kalan:"+ (burstTime) +")"+"\n";
+            result+=(inTime+1) + "  sn  " + "proses askıda" + "    (id:"+processId+ "  öncelik:"+ priority + "  kalan:"+ (burstTime-1) +")"+"\n";
             return result;
         }
-        else if (outTime-inTime==1 && burstTime ==1) //tek adımlı bir  proses mi
+        else if (outTime-inTime==1 && burstTime == 1) //tek adımlı bir  proses mi
         {
-            result= inTime + "  sn  " + "proses başladı" + "   (id:"+processId+ "  öncelik:"+ priority + "  kalan:"+ burstTime +")"+"\n";
+            result= inTime + "  sn  " + "proses başladı" + "   (id:"+processId+ "  öncelik:"+ priority + "  kalan:"+ (burstTime )+")"+"\n";
             result+=(inTime+1) + "  sn  " + "proses bitti" + "     (id:"+processId+ "  öncelik:"+ priority + "  kalan:"+ (burstTime-1) +")"+"\n";
             return result;
         }
