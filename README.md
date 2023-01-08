@@ -13,10 +13,10 @@ Verilen dosyayı okumak ve proses listesine eklemek için kullanılan sınıftı
 Proseslerin işlenmesiyle ilgili bilgileri tutan sınıftır. İlgili prosesin id’sini, önceliğini, giriş ve çıkış zamanlarını, patlama zamanını, kalan zamanını ve prosesin statüsünü tutar. toString metoduyla ilgili prosesin istenilen bilgilerini string bir şekilde döndürür.
 
 ## Scheduling
+Scheduling sınıfı genel tanımı ile tüm proseslerin yönetildiği sınıftır. İlk olarak dosyadan alınan verilerde ilk gelen proses bulunur. Bu proses gerçek zamanlı bir proses değil ise 1 saniye çalıştırılır ve kuyruk kontrol edilir. Gerçek zamanlı ise çalışma süresi boyunca kesilmeden işlemine devam eder. İşletilen proseslerin bursttime değerleri 1 azaltılır ve öncelik seviyesi düşürülür. Kullanıcı prosesleri işletildikten 1 sn sonra kuyruğa eklenilir. Burada 20 saniye boyunca işletilmeyen prosesin zaman aşımına uğratılması koda eklenememiştir ve eksik kalmıştır.
 
-
-## Builder
-
+## Builder
+Builder sınıfı ProcessBuilder sınıfı ile türetilecek prosesler için yazılmış ve içinde giriş çıkış ve bekleme zamanı bilgilerini tutan bir sınıftır. Proseslerin out buffer’ına bu bilgileri göndermektedir.
 
 ## Main
 Programın başladığı sınıftır. Burada ilgili sınıfların nesneleri oluşturulur. Dosya yolu ReadBuffer nesnesine verilir ve proses listesi alınır. Bu proses listesi Scheduling algoritmasına gönderilir. Gelen ProcessProcessing listesini ve değerlerini toString metoduyla ekrana basar.
