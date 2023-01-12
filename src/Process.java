@@ -1,11 +1,11 @@
 
 public class Process {
 
-    public java.lang.Process pBuilder; //processBuilder
-    private int processID; //proses numarası
-    private int priority; //öncelik
-    private int arrivingTime; //varış zamanı
-    private int burstTime; //çalışma zamanı
+    public java.lang.Process pBuilder; 
+    private int processID;
+    private int priority;
+    private int arrivingTime; 
+    private int burstTime; 
 
     public Process() {
         this.processID = 0;
@@ -22,39 +22,30 @@ public class Process {
         this.burstTime = burstTime;
         this.pBuilder=pB;
     }
-    //proses  numarası al
     public int getProcessID() {
         return processID;
     }
-    //proses ıd atama işlemi
     public void setProcessID(int processID) {
         this.processID = processID;
     }
-    //öncelik  numarası al
     public int getPriority() {
         return priority;
     }
-    //öncelik ayarla
     public void setPriority(int priority) {
         this.priority = priority;
     }
-    //varış zamanı al
     public int getArrivingTime() {
         return arrivingTime;
     }
-    //varış zamanı ayarla
     public void setArrivingTime(int arrivingTime) {
         this.arrivingTime = arrivingTime;
     }
-    //çalışma zamanı al
     public int getBurstTime() {
         return burstTime;
     }
-    //varış zamanı ayarla
     public void setBurstTime(int burstTime) {
         this.burstTime = burstTime;
     }
-    //proses yazdırma
     @Override
     public String toString() {
         return "{" +

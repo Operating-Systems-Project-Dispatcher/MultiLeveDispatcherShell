@@ -6,12 +6,13 @@ import static java.awt.SystemColor.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-            ReadBuffer in = new ReadBuffer(); //proses çıktıları için buffer.
-            //dosyadan processlerin okunması ve gerekli kuyruklara yerleştirilmesi.
+    	
+            ReadBuffer in = new ReadBuffer(); 
+            
             ArrayList<Process> processes = in.getProcesses("giriş.txt");
-            //proseslerin yönetilmesi.
+            
             ArrayList<ProcessProcessing> gantt = new Scheduling().getSchedular(processes);
-            //sonuc yazdır.
+            
             System.out.print(gantt.toString().replace(", ",""));
     }
 }

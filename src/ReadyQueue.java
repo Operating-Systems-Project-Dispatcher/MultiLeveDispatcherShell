@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-
-//Kuyruk yapısı
-//Hazırda bekleyen prosesler bu kuyrukta tutulur.
 public class ReadyQueue {
     private ArrayList<Process> queue;
 
@@ -10,8 +7,6 @@ public class ReadyQueue {
     {
         queue = new ArrayList<>();
     }
-
-    //kuyruktan alma fonk.
     public Process dequeue()
     {
         Process p = null;
@@ -32,10 +27,8 @@ public class ReadyQueue {
             return queue.get(0);
         }
     }
-    //kuyruğa ekleme fonk.
     public void enqueue(Process process)
     {
-        //rasti kur radha eshte bosh
         if (queue.isEmpty()) {
             queue.add(process);
         }

@@ -1,48 +1,39 @@
-
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-//tüm prosesler bu sınıfta yönetilir
 public class Scheduling {
-    //Gantt
-    private ArrayList<ProcessProcessing> processProcessing; //proseslerin tutulduğu liste
-    private int currentTime; //şimdiki zaman
+	
+    private ArrayList<ProcessProcessing> processProcessing; 
+    private int currentTime;
     private int exeTime;
-    private ReadyQueue readyQueue; //hazırda bekleyenlerin tutulduğu kuyruk
-
-    //constructer func.
+    private ReadyQueue readyQueue;
     public Scheduling(){
         processProcessing = new ArrayList<>();
         currentTime = 0;
         exeTime = 0;
         readyQueue = new ReadyQueue();
     }
-    //tüm foksiyonlar kuyruktan temizleninceye karar işletilir.
     public ArrayList<ProcessProcessing> getSchedular(ArrayList<Process> processes) throws IOException {
         currentTime = this.getFirstArrivingTime(processes);
         int in = currentTime ,out = currentTime;
-        ArrayList<Process> processes1 = this.getFirstArrivingProcesses(processes);  //ilk gelen proses alınır
+        ArrayList<Process> processes1 = this.getFirstArrivingProcesses(processes); 
 
         for(Process process : processes1){
-            readyQueue.enqueue(process); //ilk proses kuyruğa eklenir
+            readyQueue.enqueue(process);
             processes.remove(process);
         }
 
         ArrayList<Process> orderedByArrivingTime = this.orderProcessesByArrivingTime(processes);
 
-        while(!readyQueue.isEmpty()){ // kuyrukta proses bitinceye kadar dönen döngü
+        while(!readyQueue.isEmpty()){
             Process process = readyQueue.dequeue();
-
-
             byte[] buffer = new byte[65536];
             int length;
 
             if(orderedByArrivingTime.size() > 0)
             {
-                //Handle of all arriving processes while one process has the control of CPU
                 for (int i = 0; i < orderedByArrivingTime.size(); i++) {
                     Process p = orderedByArrivingTime.get(i);
 
@@ -62,10 +53,6 @@ public class Scheduling {
                         process.setPriority(process.getPriority()+1);
                         out = currentTime;
                         readyQueue.enqueue(process);
-
-                        while((length = process.pBuilder.getInputStream().read(buffer, 0, buffer.length)) != -1) {
-                            System.out.write(buffer, 0, length);
-                        }
                         processProcessing.add(new ProcessProcessing(in, out, process.getProcessID(),process.getPriority(),process.getBurstTime()+1));
 
                         readyQueue.enqueue(p);
